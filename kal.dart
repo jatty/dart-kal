@@ -83,16 +83,27 @@ void main(List<String> args) {
 			break;
 		}
 	}
+        int type2 = 1;
+        List liste = [];
+        str Daten = "";
 	for (int i in daten.keys.toList()..sort()) {
                 if (type.toLowerCase() == daten[i].toLowerCase() || type == "all") {
 			// dt. Schreibweise
-			// var day = i.day; var month = i.month; var year = i.year;
-			// day = day.toString(); if (day.length == 1) day = "0" + day;
-        		// month = month.toString(); if (month.length == 1) month = "0" + month;
-			// print ("${daten[i]}: ${wd[i.weekday-1]}, $day.$month.$year");
+			var day = i.day; var month = i.month; var year = i.year;
+			day = day.toString(); if (day.length == 1) day = "0" + day;
+			month = month.toString(); if (month.length == 1) month = "0" + month;
+			Daten = "${daten[i]}: ${wd[i.weekday-1]}, $day.$month.$year";
+			if (type2 == 1)
+				print (Daten);
+			else
+				liste.add(Daten);
 			// ISO-Schreibweise
-			print ("${wd[i.weekday-1]} ${i.toString().split(' ')[0]} ${daten[i]}");
+			// print ("${wd[i.weekday-1]} ${i.toString().split(' ')[0]} ${daten[i]}");
 		}
+	}
+        if (type2 == 2) {
+		liste.sort();
+		for (str i in liste) print(i);
 	}
         return 0;
 }
